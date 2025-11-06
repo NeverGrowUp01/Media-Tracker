@@ -7,7 +7,7 @@ spacy
 dateparser
 python-dateutil
 openpyxl
-lxml
+lxml_html_clean
+lxml<5.3
 urllib3
 regex
-bs4

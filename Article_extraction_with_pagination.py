@@ -20,11 +20,8 @@ from newspaper import Article
 # --- startup helper: ensure spaCy model + nltk assets exist ---
 import subprocess, sys
 import importlib
-try:
-    import spacy
-except Exception:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "spacy"])
-    import spacy
+import spacy
+nlp = spacy.load("en_core_web_sm")
 
 # try to load model, if missing download it
 try:

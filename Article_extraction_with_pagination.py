@@ -31,7 +31,7 @@ try:
     nlp = spacy.load("en_core_web_sm")
 except Exception:
     # download model programmatically
-    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+    #subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
 
 # newspaper3k often needs nltk punkt

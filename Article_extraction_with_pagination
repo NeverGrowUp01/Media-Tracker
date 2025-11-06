@@ -13,6 +13,30 @@ from io import BytesIO
 import time
 from dateparser.search import search_dates
 import dateparser
+# --- startup helper: ensure spaCy model + nltk assets exist ---
+import subprocess, sys
+import importlib
+try:
+    import spacy
+except Exception:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "spacy"])
+    import spacy
+
+# try to load model, if missing download it
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception:
+    # download model programmatically
+    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
+# newspaper3k often needs nltk punkt
+try:
+    import nltk
+    nltk.data.find('tokenizers/punkt')
+except Exception:
+    import nltk
+    nltk.download('punkt')
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")

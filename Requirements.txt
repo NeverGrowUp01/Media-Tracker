@@ -1,0 +1,13 @@
+streamlit
+pandas
+requests
+beautifulsoup4
+newspaper3k
+spacy
+dateparser
+python-dateutil
+openpyxl
+lxml
+urllib3
+regex
+bs4

@@ -8,6 +8,6 @@ dateparser
 python-dateutil
 openpyxl
 lxml_html_clean
-lxml<5.3
+lxml==5.2.2 --only-binary=:all:
 urllib3
 regex

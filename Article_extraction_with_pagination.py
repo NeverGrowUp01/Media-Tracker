@@ -1,10 +1,13 @@
+import os
+
+# Force newspaper3k to use selectolax (avoids lxml build/compat issues)
+os.environ["NEWSPAPER_USE_SELECTOLAX"] = "1"
 import json
 import random
 import streamlit as st
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from newspaper import Article
 import spacy
 import re
 from urllib.parse import quote, urlparse
@@ -13,6 +16,7 @@ from io import BytesIO
 import time
 from dateparser.search import search_dates
 import dateparser
+from newspaper import Article
 # --- startup helper: ensure spaCy model + nltk assets exist ---
 import subprocess, sys
 import importlib
@@ -37,6 +41,13 @@ try:
 except Exception:
     import nltk
     nltk.download('punkt')
+if __name__ == "__main__":
+    try:
+        from newspaper import Article
+        print("newspaper import OK; parser in use:", os.environ.get("NEWSPAPER_USE_SELECTOLAX"))
+    except Exception as e:
+        print("Import error:", e)
+
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")

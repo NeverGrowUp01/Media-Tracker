@@ -1,0 +1,7 @@
+build-essential
+python3-dev
+libffi-dev
+libxml2
+libxslt1.1
+libxslt1-dev
+libpq-dev

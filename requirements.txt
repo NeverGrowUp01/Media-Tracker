@@ -13,3 +13,17 @@ lxml
 urllib3
 regex
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
+streamlit
+pandas
+numpy
+requests
+beautifulsoup4
+lxml
+spacy
+tqdm
+altair
+nltk
+textblob
+scikit-learn
+openpyxl
+rich

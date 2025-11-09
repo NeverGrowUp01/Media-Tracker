@@ -1,13 +1,10 @@
-import os
-
-# Force newspaper3k to use selectolax (avoids lxml build/compat issues)
-os.environ["NEWSPAPER_USE_SELECTOLAX"] = "1"
 import json
 import random
 import streamlit as st
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from newspaper import Article
 import spacy
 import re
 from urllib.parse import quote, urlparse
@@ -16,35 +13,26 @@ from io import BytesIO
 import time
 from dateparser.search import search_dates
 import dateparser
-from newspaper import Article
-# --- startup helper: ensure spaCy model + nltk assets exist ---
-import subprocess, sys
-import importlib
-import spacy
-nlp = spacy.load("en_core_web_sm")
+import streamlit as st
 
-# try to load model, if missing download it
-try:
-    nlp = spacy.load("en_core_web_sm")
-except Exception:
-    # download model programmatically
-    #subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
-    nlp = spacy.load("en_core_web_sm")
+def check_password():
+    if "authenticated" in st.session_state and st.session_state.authenticated:
+        return True
+    pwd = st.text_input("🔒 Enter access password", type="password")
+    if not pwd:
+        return False
+    if "app_password" in st.secrets and pwd == st.secrets["app_password"]:
+        st.session_state.authenticated = True
+        return True
+    else:
+        if pwd:
+            st.error("Incorrect password")
+        return False
 
-# newspaper3k often needs nltk punkt
-try:
-    import nltk
-    nltk.data.find('tokenizers/punkt')
-except Exception:
-    import nltk
-    nltk.download('punkt')
-if __name__ == "__main__":
-    try:
-        from newspaper import Article
-        print("newspaper import OK; parser in use:", os.environ.get("NEWSPAPER_USE_SELECTOLAX"))
-    except Exception as e:
-        print("Import error:", e)
+if not check_password():
+    st.stop()
 
+# --- rest of your app follows ---
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")

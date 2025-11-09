@@ -1,10 +1,9 @@
 __pycache__/
-.env
 *.pyc
-*.pyo
-*.pyd
-*.db
-.env/
+.env
+*.sqlite3
+*.egg-info/
+*.log
 .DS_Store
-*.egg-info
 .vscode/
+.streamlit/secrets.toml

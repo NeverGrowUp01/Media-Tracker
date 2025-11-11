@@ -1,12 +1,23 @@
+# Streamlit + Core Tools
 streamlit
 pandas
-requests
-beautifulsoup4
-newspaper3k
-spacy>=3.5
-dateparser
-lxml
-openpyxl
-selectolax
-lxml_html_clean
 nltk
+openpyxl
+sentence-transformers
+bertopic
+beautifulsoup4
+
+# spaCy and dependencies (tested for Python 3.10)
+spacy==3.7.4
+blis==0.7.11
+thinc==8.2.5
+preshed==3.0.9
+cymem==2.0.8
+murmurhash==1.0.10
+srsly==2.4.8
+catalogue==2.0.10
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5
+
+# spaCy English model (auto-download in Docker)
+en-core-web-sm

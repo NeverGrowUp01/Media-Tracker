@@ -7,6 +7,8 @@ bertopic
 beautifulsoup4
 newspaper3k
 lxml_html_clean
+dateparser
+
 # spaCy stack (versions with wheels for Python 3.11)
 spacy==3.7.4
 blis==0.7.11
